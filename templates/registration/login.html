@@ -9,7 +9,8 @@
         Please try again
     </p>
     {% else %}
-     <p>Please, Login in below</p>
+     <p>Please, Login in below.If you don't have an
+        account <a href="{% url 'register' %}">register here</a></p></p>
      <div class="login-form">
         <form action="{% url 'login' %}" method="post"> 
             {% csrf_token %}
