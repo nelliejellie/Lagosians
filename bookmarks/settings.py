@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
+    'actions.apps.ActionsConfig',
     'images.apps.ImagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -154,3 +155,9 @@ SOCIAL_AUTH_FACEBOOK_SECRET = 'b1a57327db4c271f02ba5777bf26d5b6' # Facebook App 
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '836313487334-u2e4fkk5uredrqqsmgsh8bt2m2fgtemb.apps.googleusercontent.com' # Google Consumer Key
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'HoaPDTIfUvfT9ljWAapcpjel' # Google Consumer Secret
+
+from django.urls import reverse_lazy
+# django adds a get_absolute_url ,ethod to any model that appears here
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
