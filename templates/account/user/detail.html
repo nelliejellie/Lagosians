@@ -27,6 +27,16 @@
     <div id="image-list" class="image-container">
         {% include "images/image/list_ajax.html" with images=user.images_created.all %}
     </div>
+    <div class="image-likes">
+        {% for user in user.followers.all %}
+        <div>
+            <img src="{{ user.profile.photo.url }}" alt="">
+            <p>{{ user.first_name }}</p>
+        </div>
+        {% empty %}
+            Nobody follows you yet
+        {% endfor %}
+    </div>
     {% endwith %}
 {% endblock %}
 {% block domready %}

@@ -157,7 +157,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '836313487334-u2e4fkk5uredrqqsmgsh8bt2m2fgtemb.a
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'HoaPDTIfUvfT9ljWAapcpjel' # Google Consumer Secret
 
 from django.urls import reverse_lazy
-# django adds a get_absolute_url ,ethod to any model that appears here
+# django adds a get_absolute_url method to any model that appears here
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
 }
