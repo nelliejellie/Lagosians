@@ -10,9 +10,9 @@
     </p>
     {% endwith %}
 
-    <!--<p>Drag the following button to your bookmarks toolbar to bookmark images from other websites
-        &#8594 <a href="javascript:{% include 'bookmarklet_launcher.js' %}" class="button">Bookmark this</a>
-    </p>-->
+    <p>create a post
+        &#8594 <a href="{% url 'images:create' %}" class="button">Post</a>
+    </p>
     <p>You can edit your <a href="{% url 'edit' %}">Edit your profile</a>
     or <a href="{% url 'password_change' %}">change your password.</a>
     </p>

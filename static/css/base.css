@@ -43,12 +43,15 @@ ol {
     border-bottom:4px solid #1cdf78;
     overflow:auto;
 }
-
+#header .imglogo {
+    float:left;
+    margin: 4px;
+}
 #header .logo {
     font-family: 'Muli', sans-serif;
     float:left;
     color:#f3f7cc;
-    font-size:20px;
+    font-size:30px;
     margin-right:10%;
 }
 
@@ -111,7 +114,7 @@ input, textarea {
 }
 input[type=submit], a.button {
     font-weight:bold;
-    background:#12c064;
+    background:#82b2ce;
     color:#fff;
     padding:10px 20px;
     font-size:14px;
