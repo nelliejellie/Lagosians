@@ -119,3 +119,5 @@ def image_ranking(request):
         'most_viewed' : most_viewed,
     }
     return render(request, 'images/image/ranking.html')
+
+
