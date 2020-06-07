@@ -12,7 +12,7 @@
             {% if request.user.is_authenticated %}
             <ul class="menu">
                 <li {% if section == 'lifestyle' %} class="selected"{% endif %}>
-                        <a href="#">Lagos</a>
+                        <a href="{% url 'pages:index' %}">Lagos</a>
                 </li>
                 <li {% if section == 'dashboard' %} class="selected"{% endif %}>
                     <a href="{% url 'dashboard' %}">Home</a>

@@ -30,5 +30,5 @@ class UserEditForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = {'date_of_birth', 'photo'}
+        fields = {'date_of_birth', 'photo', 'occupation'}
 #this allows users edit the custom profile model

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+<!--{% load account_tags %}-->
 {% block title %} Dashboard {% endblock%}
 
 {% block content  %}
@@ -7,9 +7,20 @@
     {% with total_images_created=request.user.images_created.count %}
     <p> You have posted {{ total_images_created }}
         image{{ total_images_created | pluralize }}
-    </p>
+    </p><br>
     {% endwith %}
-
+    <span class="count">
+        followers
+        <span class="total">
+            {{ user.followers.count }}
+        </span>
+    </span>
+    <span class="count">
+        <span class="total">
+            {{ profile.count }}
+        </span>
+        following{{ total_followers| pluralize }}
+    </span><br><br>
     <p>create a post
         &#8594 <a href="{% url 'images:create' %}" class="button">Post</a>
     </p>

@@ -36,10 +36,10 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
-    #display all actions by default
+    #display all actions by default except users action
     actions = Action.objects.exclude(user=request.user)
     following_ids = request.user.following.values_list('id', flat=True)
-
+    profile = Contact.objects.filter(user_from=request.user)
     if following_ids:
         #if users is following others, retrive only their actions
         actions = actions.filter(user_id__in = following_ids)
@@ -48,6 +48,7 @@ def dashboard(request):
     context = {
         'section' : 'dashboard',
         'actions' : actions,
+        'profile' : profile,
         }
     return render(request, 'account/dashboard.html', context)
 
@@ -97,9 +98,11 @@ def user_list(request):
 @login_required
 def user_detail(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
+    profile = Contact.objects.filter(user_from=request.user)
     context = {
         'section':'people',
         'user': user,
+        'profile': profile,
     }
     return render (request, 'account/user/detail.html', context)
 

@@ -21,6 +21,7 @@ window.onload=function(){
 	})
 	
 	changeLikeToUnlike();
+	changeFollowToUnfollow();
  
 }
 
@@ -34,6 +35,14 @@ function changeLikeToUnlike(){
 	buttonLike.addEventListener('click', function(e){
 		console.log('liked');
 		this.innerHTML = 'Unlike'
+
+	})
+}
+function changeFollowToUnfollow(){
+	//get access to the the like button
+	buttonFollow = document.querySelector('#follow');
+	buttonFollow.addEventListener('click', function(e){
+		this.innerHTML = 'Unfollow'
 
 	})
 }
