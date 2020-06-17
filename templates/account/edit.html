@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Edit your account{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <h1>Edit your account:</h1>
     <p>You can edit your account using the following form:</p>
     <form  method="post" enctype="multipart/form-data">

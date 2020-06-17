@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}{{ image.title}}{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <h1>{{image.title}}</h1>
     {% load thumbnail %}
     <a href="{{ image.image.url }}">

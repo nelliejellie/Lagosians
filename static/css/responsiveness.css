@@ -1,7 +1,7 @@
 
 
 @media (max-width: 1200px) {
-	header nav {position: fixed;top: 0;left: 0;width: 200px;height: 100%;background-color: #e44d3a;padding: 25px 20px;opacity: 0;visibility: hidden;z-index: 0}
+	header nav {position: fixed;top: 0;left: 0;width: 200px;height: 100%;background-color: #82b2ce;padding: 25px 20px;opacity: 0;visibility: hidden;z-index: 0}
 	header nav.active {opacity: 1;visibility: visible;z-index: 9999;}
 	header nav ul li {float: left;width: 100%;text-align: left;padding: 0 0 0 0;margin-bottom: 20px;}
 	.menu-btn {display: block;}
@@ -96,18 +96,6 @@
 	.usy-dt .reply {
 		width: 450px;
 	}
-	.post-bar{width:400px;margin-left: 1px;}
-	.post-topbar{width:400px;}
-	.main-section {
-		float: right;
-		width:150%;
-	}
-	.user-data{
-		width:400px;
-	}
-	.suggestions{
-		width:400px;
-	}
 	
 }
 
@@ -141,19 +129,8 @@
 	.postcomment .form-control {width: 100%;margin-left: 0px;margin-top: 5px;}
 	.usy-dt .reply {width: 270px;}
 	.privacy i {margin-left: 10px;}
-	.bids-detail ul { display: block;}
-	.post-bar{width:400px;margin-left: 1px;}
-	.post-topbar{width:400px;}
-	.main-section {
-		float: right;
-		width:150%;
-	}
-	.user-data{
-		width:400px;
-	}
-	.suggestions{
-		width:400px;
-	}
+    .bids-detail ul { display: block;}
+    
 }
 
 
@@ -219,21 +196,16 @@
 	.bennertext {left: 5%;right: 5%;}
 	.search-container input[type=text] {height: 45px;font-size: 16px;}
 	.search-container button {width: 12%; height: 45px;}
+	#image-list .image{}
 	.devepbtn a{
 		display: inline-block;
 		margin-bottom: 5px;
+    }
+    .user-data {
+		display: none;
 	}
-	.post-bar{width:380px;margin-left: 1px;}
-	.post-topbar{width:380px;}
-	.main-section {
-		float: right;
-		width:150%;
-	}
-	.user-data{
-		width:380px;
-	}
-	.suggestions{
-		width:380px;
+	.suggestions {
+		display: none;
 	}
 	.usy-dt .reply {
     margin-bottom: 25px;

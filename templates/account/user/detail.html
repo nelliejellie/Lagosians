@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load static  %}
 
 {% load thumbnail %}
 
 {% block title %}{{ user.get_full_name }}{% endblock %}
 
 {% block content %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <h1>{{ user.get_full_name }}</h1>
     <div class="profile-info">
         <img src="{% thumbnail user.profile.photo 180x180 %}" alt="" class="user-detail">

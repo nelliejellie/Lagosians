@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Images{% endblock %}
 
 {% block content %}
-<h1>Images</h1>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+<h1>Posts</h1>
 <div id="image-list">
     {% include 'images/image/list_ajax.html' %}
 </div>

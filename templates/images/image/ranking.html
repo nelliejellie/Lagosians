@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %} Images Ranking {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <h1>Image ranking</h1>
     <ol>
         {% for image in most_viewed %}
