@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Search Posts{% endblock %}
+
+{% block content %}
+<style>
+    a,img{
+        padding: 10px;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <h1>Posts containing "{{ values }}"</h1>
+    {% for post in posts %}
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="">
+        {% else %}
+            <img src="{% static 'images/no_image.png' %}" alt="">
+        {% endif %}
+        <h3><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h3>
+        <p>{{ post.description|truncatewords_html:15 }}</p>
+    {% empty %}
+        <p>There are no search results for your query</p>
+    {% endfor %}
+{% endblock %}

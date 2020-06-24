@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'social_django',
     'django_extensions',
     'easy_thumbnails',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -82,8 +83,11 @@ WSGI_APPLICATION = 'bookmarks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lagosian',
+        'USER':'postgres',
+        'PASSWORD':'Chidubem1992',
+        'HOST':'localhost'
     }
 }
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm, UserRegistrationForm,UserEditForm,ProfileEditForm
+from .forms import LoginForm, UserRegistrationForm,UserEditForm,ProfileEditForm,ImageSearch
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Contact
 from django.contrib import messages
@@ -10,6 +10,7 @@ from bookmarks.common.decorators import ajax_required
 from django.views.decorators.http import require_POST
 from actions.utils import create_action
 from actions.models import Action 
+from django.contrib.postgres.search import SearchVector
 
 
 
@@ -89,8 +90,10 @@ def edit(request):
 @login_required
 def user_list(request):
     users = User.objects.filter(is_active=True)
+    form = ImageSearch()
     context = {
         'section':'people',
+        'form': form,
         'users': users,
     }
     return render(request, 'account/user/list.html', context)
@@ -125,3 +128,17 @@ def user_follow(request):
             return JsonResponse ({'status':'error'})
     return JsonResponse ({'status':'error'})
 
+@login_required
+def userSearchView(request):
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = ImageSearch(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = User.objects.annotate(search=SearchVector('username','first_name','last_name'),).filter(search=query)
+    context = {
+        'results': results,
+        'query': query,
+    }
+    return render(request, 'account/user/search.html', context)

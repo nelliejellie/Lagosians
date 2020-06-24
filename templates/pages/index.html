@@ -242,7 +242,7 @@
 										<div class="user-profile">
 											<div class="username-dt">
 												<div class="usr-pic">
-													<img src="{{ user.profile.photo.url }}" alt="">
+													<img src="{% if user.profile.photo %}{{ user.profile.photo.url }}{% endif %}" alt="">
 												</div>
 												<br><br></div><!--username-dt end-->
 											<div class="user-specs">
@@ -330,7 +330,7 @@
 								<div class="main-ws-sec">
 									<div class="post-topbar">
 										<div class="user-picy">
-											<img src="{{ user.profile.photo.url }}" alt="" id="user-picy">
+											<img src="{% if user.profile.photo %}{{ user.profile.photo.url }}{% endif %}" alt="" id="user-picy">
 										</div>
 										<div class="post-st">
 											<ul>
@@ -389,7 +389,34 @@
 												<a href="#"><i class="fas fa-eye"></i>Views 50</a>
 											</div>
 										</div><!--post-bar end-->
-				
+										<div class="col-lg-3 pd-right-none no-pd">
+											<div class="right-sidebar">
+												<div class="widget widget-jobs">
+													<div class="sd-title">
+														<h3>Top Jobs</h3>
+														<i class="la la-ellipsis-v"></i>
+													</div>
+													<div class="jobs-list">
+														<div class="job-info">
+															<div class="job-details">
+																<h3>Senior Product Designer</h3>
+																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+															</div>
+															<div class="hr-rate">
+																<span>$25/hr</span>
+															</div>
+														</div><!--job-info end-->
+														<div class="job-info">
+															<div class="job-details">
+																<h3>Senior UI / UX Designer</h3>
+																<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+															</div>
+															<div class="hr-rate">
+																<span>$25/hr</span>
+															</div>
+													</div><!--job-info end-->
+												</div>
+											</div>
 									</div>
 									{% endfor %}	
 								</div>

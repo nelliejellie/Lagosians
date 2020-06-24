@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+
+{% block title %}Search People{% endblock %}
+
+{% block content %}
+<style>
+    a,img{
+        padding: 10px;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <h1>People named "{{ query }}"</h1>
+    {% if query %}
+        <div id="people-list">
+            {% for people in results %}
+                <div class="user">
+                    <a href="{{ people.get_absolute_url }}">
+                        <img src="{% thumbnail people.profile.photo 180x180 %}" alt="">
+                    </a>
+                    <div class="info">
+                        <a href="{{ people.get_abolute_url }}">
+                            {{ people.get_full_name }}
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>There are no search results for your query</p>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1>love</h1>
+    {% endif %}
+{% endblock %}

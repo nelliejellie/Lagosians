@@ -20,8 +20,8 @@ window.onload=function(){
 		}
 	})
 	
-	changeLikeToUnlike();
-	changeFollowToUnfollow();
+	//changeLikeToUnlike();
+	//changeFollowToUnfollow();
  
 }
 

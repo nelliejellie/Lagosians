@@ -1,12 +1,20 @@
 {% load thumbnail %}
+{% load static %}
+
     {% for  image in images %}
     <div class="image">
+        {% if image.image %}
         <a href="{{ image.get_absolute_url }}">
             {% thumbnail image.image 300x300 crop='smart' as im %}
             <a href="{{ image.get_absolute_url }}">
                 <img src="{{ im.url }}" alt="" id="my-images">
             </a>
         </a><br><br>
+        {% else %}
+        <a href="#">
+            <img src="{% static 'images/no_image.png' %}" alt="" class="image-detail">
+        </a>
+        {% endif %}
         <div class="info">
             <a href="{{ image.get_absolute_url }}" class="title">
                 <p>{{ image.title }}</p>

@@ -32,3 +32,6 @@ class ProfileEditForm(forms.ModelForm):
         model = Profile
         fields = {'date_of_birth', 'photo', 'occupation'}
 #this allows users edit the custom profile model
+
+class ImageSearch(forms.Form):
+    query = forms.CharField()
