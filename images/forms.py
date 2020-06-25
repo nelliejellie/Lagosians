@@ -9,6 +9,5 @@ class ImageCreateForm(forms.ModelForm):
         model = Image
         fields = ('title', 'description','image')
 
-class ImageSearch(forms.Form):
-    query = forms.CharField()
+
     

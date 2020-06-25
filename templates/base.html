@@ -15,10 +15,11 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'lib/slick/slick.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'lib/slick/slick-theme.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">    
-        <link href="{% static 'css/base.css' %}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'lib/slick/slick-theme.css' %}">    
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/responsiveness.css' %}">
+        <link href="{% static 'css/base.css' %}" rel="stylesheet">
+       
     </head>
     <body  oncontextmenu="return false;">
         <div id="header">
@@ -68,7 +69,7 @@
             </header><!--header end-->	
             {% endif %}
 
-            <span class="user">
+            <span class="user" style="margin: 5px;">
                 {% if request.user.is_authenticated %}
                     Hello {{ request.user }},
                     <a href="{% url 'logout' %}">Logout</a>

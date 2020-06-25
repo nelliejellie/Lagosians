@@ -16,6 +16,8 @@
     </a>
     {% endif %}
     {% with total_likes=image.users_like.count users_like=image.users_like.all %}
+    
+    {{ image.description | linebreaks }}
     <div class="image-info">
         <div>
             <span class="count">
@@ -31,8 +33,7 @@
                 Unlike
             {% endif %}
             </a>
-        </div>
-        {{ image.description | linebreaks }}
+        </div>   
     </div>
     <div class="image-likes">
         {% for user in users_like %}

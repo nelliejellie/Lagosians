@@ -1738,9 +1738,10 @@ main {
 
 /* =============== right-sidebar ============= */
 
-.right-sidebar {
+.sidebar {
 	float: left;
 	width: 100%;
+	background-color: #00b540;
 }
 .widget {
 	float: left;

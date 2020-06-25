@@ -11,6 +11,7 @@ from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 from actions.utils import create_action
 import redis
 from django.conf import settings
+from django.contrib.postgres.search import SearchVector
 
 
 #redis initialization
