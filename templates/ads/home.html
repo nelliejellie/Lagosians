@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+{% block title %}Lagosians/Ads{% endblock %}
+{% block content %}
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Classify</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,700,600,800,900,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'layerslider/css/layerslider.css' %}">
+    
+
+
+</head>
+<body>
+
+<!--Start Header section-->
+<section id="header">
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 responsive-width-top">
+                        <div class="social">
+                            <div class="social-icon">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 responsive-width-top">
+                        <div class="links text-right">
+                            <a href="new-ad.html">Post an Ad</a>
+                            <a href="{% url 'Ads:pricing' %}">Pricing Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end top bar-->
+    </header>
+</section><!--End Header section-->
+
+<!--search bar-->
+<section id="searchBar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <input class="keyword" type="text" name="keyword" placeholder="Enter Keyword Here...">
+                    <div class="label">
+                        <select class="select">
+                            <option>Location</option>
+                            <option>USA</option>
+                            <option>UK</option>
+                        </select>
+                    </div>
+                    <a href="#" class="location">
+                        <i class="fa fa fa-location-arrow "></i>
+                    </a>
+                    <button type="submit" name="submit" class="search-btn">Go Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section> <!--end search bar-->
+
+
+<!--Category-->
+<section id="categories">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="main-heading text-center">
+                    <h2>CATEGORIES</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="category">
+                    <div class="category-icon">
+                        <i class="fa fa-briefcase fa-2x"></i>
+                    </div>
+                    <h4><a href="#">JOBS</a></h4>
+                    <p><a href="#">Design & Development Jobs  ( 20 )</a></p>
+                    <p><a href="#"> Marketing Jobs  ( 09 )</a></p>
+                    <p><a href="#"> Accounts & Finance Jobs  ( 15 )</a></p>
+                    <p><a href="#"> Cleaning Jobs  ( 0 )</a></p>
+                    <p><a href="#"> Others  ( 160 )</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="category">
+                    <div class="category-icon">
+                        <i class="fa fa-home fa-2x"></i>
+                    </div>
+                    <h4><a href="#">REAL ESTATE</a></h4>
+                    <p><a href="#">Design & Development Jobs  ( 20 )</a></p>
+                    <p><a href="#"> Marketing Jobs  ( 09 )</a></p>
+                    <p><a href="#"> Accounts & Finance Jobs  ( 15 )</a></p>
+                    <p><a href="#"> Cleaning Jobs  ( 0 )</a></p>
+                    <p><a href="#"> Others  ( 160 )</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="category">
+                    <div class="category-icon">
+                        <i class="fa fa-truck fa-2x"></i>
+                    </div>
+                    <h4><a href="#">VEHICLES</a></h4>
+                    <p><a href="#">Design & Development Jobs  ( 20 )</a></p>
+                    <p><a href="#"> Marketing Jobs  ( 09 )</a></p>
+                    <p><a href="#"> Accounts & Finance Jobs  ( 15 )</a></p>
+                    <p><a href="#"> Cleaning Jobs  ( 0 )</a></p>
+                    <p><a href="#"> Others  ( 160 )</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="category">
+                    <div class="category-icon">
+                        <i class="fa fa-lightbulb-o fa-2x"></i>
+                    </div>
+                    <h4><a href="#">PRODUCTS</a></h4>
+                    <p><a href="#">Design & Development Jobs  ( 20 )</a></p>
+                    <p><a href="#"> Marketing Jobs  ( 09 )</a></p>
+                    <p><a href="#"> Accounts & Finance Jobs  ( 15 )</a></p>
+                    <p><a href="#"> Cleaning Jobs  ( 0 )</a></p>
+                    <p><a href="#"> Others  ( 160 )</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="category">
+                    <div class="category-icon">
+                        <i class="fa fa-github fa-2x"></i>
+                    </div>
+                    <h4><a href="#">PETS</a></h4>
+                    <p><a href="#">Design & Development Jobs  ( 20 )</a></p>
+                    <p><a href="#"> Marketing Jobs  ( 09 )</a></p>
+                    <p><a href="#"> Accounts & Finance Jobs  ( 15 )</a></p>
+                    <p><a href="#"> Cleaning Jobs  ( 0 )</a></p>
+                    <p><a href="#"> Others  ( 160 )</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="category">
+                    <div class="category-icon">
+                        <i class="fa fa-wrench fa-2x"></i>
+                    </div>
+                    <h4><a href="#">SERVICES</a></h4>
+                    <p><a href="#">Design & Development Jobs  ( 20 )</a></p>
+                    <p><a href="#"> Marketing Jobs  ( 09 )</a></p>
+                    <p><a href="#"> Accounts & Finance Jobs  ( 15 )</a></p>
+                    <p><a href="#"> Cleaning Jobs  ( 0 )</a></p>
+                    <p><a href="#"> Others  ( 160 )</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="category">
+                    <div class="category-icon">
+                        <i class="fa fa-female fa-2x"></i>
+                    </div>
+                    <h4><a href="#">FASHION</a></h4>
+                    <p><a href="#">Design & Development Jobs  ( 20 )</a></p>
+                    <p><a href="#"> Marketing Jobs  ( 09 )</a></p>
+                    <p><a href="#"> Accounts & Finance Jobs  ( 15 )</a></p>
+                    <p><a href="#"> Cleaning Jobs  ( 0 )</a></p>
+                    <p><a href="#"> Others  ( 160 )</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--End Category-->
+
+<!--Classify Advertisement-->
+<section id="advertisement">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="main-heading text-center">
+                    <h2>CLASSIFY ADVERTISEMENT</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ad-tabs">
+                    <span class="tab active" id="content1">Latest Ads</span>
+                    <span class="tab" id="content2">Most Popular Ads</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 content content1">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 adp">
+                        <div class="ads">
+                            <a href="#"><img src="images/images/ads1_03.png"></a>
+                            <div class="ads-title"><p><a href="#">Classic Red Bike</a></p></div>
+                            <a href="#" class="ads-hover">
+                                <span>$4,000</span>
+                                <i class="fa fa-motorcycle fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+            <div class="col-md-12 content content2">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 adp">
+                        <div class="ads">
+                            <a href="#"><img src="images/images/ads1_03.png"></a>
+                            <div class="ads-title"><p><a href="#">Classic Red Bike</a></p></div>
+                            <a href="#" class="ads-hover">
+                                <span>$4,000</span>
+                                <i class="fa fa-motorcycle fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--end advertisement-->
+<!--Footer-->
+<section id="footer">
+    <footer>
+        
+    </footer>
+</section>
+<!--End Footer-->
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+<script src="{% static 'js/default.js' %}"></script>
+<script src="{% static 'layerslider/js/greensock.js' %}"></script>
+<script src="{% static 'layerslider/js/layerslider.kreaturamedia.jquery.js' %}"></script>
+<script src="{% static 'layerslider/js/layerslider.transitions.js' %}"></script>
+
+
+
+</body>
+{% endblock %}
+
+</html>

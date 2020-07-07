@@ -50,8 +50,8 @@
                                 <li {% if section == 'people' %} class="selected"{% endif %}>
                                     <a href="{% url 'user_list' %}">Meet People</a>
                                 </li>
-                                <li>
-                                    <a href="#">Ads</a>
+                                <li {% if section == 'ads' %} class="selected"{% endif %}>
+                                    <a href="{% url 'Ads:ad_home' %}">Ads</a>
                                 </li>
                                 <li>
                                     <a href="#" title="" class="not-box-openm">

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'easy_thumbnails',
     'django.contrib.postgres',
+    'Ads.apps.AdsConfig',
 ]
 
 MIDDLEWARE = [

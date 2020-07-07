@@ -23,6 +23,7 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('images/', include('images.urls', namespace='images')),
+    path('Ads/', include('Ads.urls', namespace='Ads')),
     path('', include('pages.urls', namespace='pages')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
