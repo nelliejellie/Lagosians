@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-sm-6 responsive-width-top">
                             <div class="links text-right">
-                                <a href="new-ad.html">Post an Ad</a>
+                                <a href="#pricing-plan">Post an Ad</a>
                                 <a href="register.html">Register</a>
                             </div>
                         </div>
@@ -72,9 +72,22 @@
                             <p><strong>Lorem ipsum dolor sit amet</strong> consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam quis nostrud lobortis commodo consequat. </p>
                             <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </p>
                         </div>
-                        <div class="pricing-plan">
+                        <div class="pricing-plan" id="pricing-plan">
                             <h4 class="inner-heading">PRICING PLANS</h4>
                             <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="price-plan">
+                                        <h4><span>FREE</span></h4>
+                                        <div class="user-plan">
+                                            <h4>DAILY PLAN</h4>
+                                            <ul>
+                                                <li>Unlimited Ads</li>
+                                                <li>24 hours</li>
+                                            </ul>
+                                            <a href="{% url 'Ads:ad_form' %}" type="button">Purchase Now</a>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-sm-4">
                                     <div class="price-plan">
                                         <h4><span>&#8358;{{ weekly_price }}</span></h4>
@@ -100,7 +113,7 @@
                                             <a href="#" type="button">Purchase Now</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div><br>
                                 <div class="col-sm-4">
                                     <div class="price-plan">
                                         <h4><span>&#8358;{{ yearly_price }}</span></h4>

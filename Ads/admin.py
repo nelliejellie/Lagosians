@@ -3,8 +3,7 @@ from .models import Ads
 
 # Register your models here.
 
-admin.site.register(Ads)
-
+@admin.register(Ads)
 class AdsAdmin(admin.ModelAdmin):
-    list_display = ['ad_name', 'user']
-    prepopulated_fields = {'slug':('ad_name')}
+    list_display = ['adname', 'user', 'slug']
+    prepopulated_fields = {'slug':('adname',)}
