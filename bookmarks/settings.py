@@ -46,7 +46,12 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'django.contrib.postgres',
     'Ads.apps.AdsConfig',
+    'paystack',
+    'paystack_payments.apps.PaystackPaymentsConfig'
 ]
+
+PAYSTACK_PUBLIC_KEY = 'pk_test_70c936bbe57c77727e27a3d36be0fcae769eab3b' # paystack public key
+PAYSTACK_SCRET_KEY = 'sk_test_d7879d1cd705eb7ebda6f56b277a77c5fa09cc93' #paystack secret key
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

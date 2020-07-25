@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <h1>Fill in the details to subscribe to your weekly adverts</h1>
+    <form action="" method="POST" id="paymentForm">  
+        <div class=”container”>
+            {{customer_form.as_p}}
+            <input type="submit" value="Make payment" onclick="payWithPaystack()" >
+        </div>
+        {% csrf_token %}
+    </form>
+
+{% endblock %}

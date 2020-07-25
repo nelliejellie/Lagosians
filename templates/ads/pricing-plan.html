@@ -95,9 +95,15 @@
                                             <h4>WEEKLY PLAN</h4>
                                             <ul>
                                                 <li>Unlimited Ads</li>
-                                                <li>07 Day</li>
+                                                <li>07 Days</li>
                                             </ul>
-                                            <a href="#" type="button">Purchase Now</a>
+                                            {% for ad_object in ad %}
+                                                {% if ad_object.user == request.user and ad_object.weekly_ad %}                                                
+                                                    <a href="{% url 'Ads:ad_form' %}" type="button">Purchase Now</a>
+                                                {% else %}
+                                                    <a href="{% url 'paystack:payment'  %}" type="button">Purchase Now</a>
+                                                {% endif %}
+                                            {% endfor %} 
                                         </div>
                                     </div>
                                 </div>

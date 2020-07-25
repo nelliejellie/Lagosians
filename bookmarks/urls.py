@@ -24,6 +24,7 @@ urlpatterns = [
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('images/', include('images.urls', namespace='images')),
     path('Ads/', include('Ads.urls', namespace='Ads')),
+    path('pay-with-paystack/', include('paystack_payments.urls', namespace='paystack')),
     path('', include('pages.urls', namespace='pages')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

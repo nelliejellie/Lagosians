@@ -1,0 +1,40 @@
+
+
+<form action="">
+    <script src="https://js.paystack.co/v1/inline.js"></script> 
+
+    <button type="button" onclick="payWithPaystack()"> Pay </button>
+</form>
+<input type="hidden" value="{{payment_email}}" id="email">
+<input type="hidden" value="{{payment_firstname}}" id="firstname">
+<input type="hidden" value="{{payment_lastname}}" id="lastname">
+
+<a href="" id="proceed">proceed to create ad if payment is successful</a>
+
+
+
+<script>
+    function payWithPaystack() {
+        let handler = PaystackPop.setup({
+        key: "pk_test_70c936bbe57c77727e27a3d36be0fcae769eab3b", // Replace with your public key
+        email: document.getElementById('email').value,
+        amount: 200 * 100,
+        firstname: document.getElementById('firstname').value,
+        lastname: document.getElementById('lastname').value,
+        ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+        // label: "Optional string that replaces customer email"
+        onClose: function(){
+            alert('Window closed.');
+        },
+        callback: function(response){
+            let message = 'Payment complete! Reference: ' + response.reference;
+            alert(message);
+            let p = document.getElementById('proceed')
+            p.setAttribute('href',"{% url 'pages:index' %}")
+
+        }
+        });
+        handler.openIframe();
+    }
+    window.onload = payWithPaystack();
+</script>

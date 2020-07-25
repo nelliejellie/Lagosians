@@ -45,5 +45,8 @@ class Ads(models.Model):
         return reverse('Ads:details', args=[self.id, self.slug])
 
 
+
+
+
    
 

@@ -18,7 +18,9 @@ def ad_view(request):
 @login_required
 def pricing_view(request):
     ad = Ads.objects.all()
-    print_val()
+    for people in ad:
+        if (people.user == request.user):
+            print (people.weekly_ad)
     delete_daily_ads()
     context = {
         'weekly_price': weekly_price,
