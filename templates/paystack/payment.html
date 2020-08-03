@@ -5,12 +5,13 @@
 
     <button type="button" onclick="payWithPaystack()"> Pay </button>
 </form>
+<!--info gotten from the database-->
 <input type="hidden" value="{{payment_email}}" id="email">
 <input type="hidden" value="{{payment_firstname}}" id="firstname">
 <input type="hidden" value="{{payment_lastname}}" id="lastname">
-
-<a href="" id="proceed">proceed to create ad if payment is successful</a>
-
+<form action="">
+    <button type="submit" value="weekly"><a href="" id="proceed">proceed to create ad if payment is successful</a></button>
+</form>
 
 
 <script>
@@ -30,7 +31,7 @@
             let message = 'Payment complete! Reference: ' + response.reference;
             alert(message);
             let p = document.getElementById('proceed')
-            p.setAttribute('href',"{% url 'pages:index' %}")
+            p.setAttribute('href',"{% url 'Ads:ad_form_weekly' %}")
 
         }
         });

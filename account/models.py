@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.db.models.signals import post_save
+from Ads.models import Ads
 
 # Create your models here.
 #creating a related profile to your user
@@ -10,6 +12,8 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to='users/%Y/%m/%d', blank=True)
     occupation = models.CharField(max_length=30, null=False, default='unemployed')
     otherSkill = models.CharField(max_length=15, blank=True)
+    monthly_ad = models.BooleanField(default=False)
+    yearly_ad = models.BooleanField(default=False)
 
 
     def __str__(self):
@@ -30,3 +34,14 @@ class Contact(models.Model):
 #adds the following field to user dynamically
 user_model = get_user_model()
 user_model.add_to_class('following', models.ManyToManyField('self', through=Contact,related_name='followers', symmetrical=False ))
+
+
+
+def update_profile(sender, **kwargs):
+    print(kwargs['instance'].user.username)
+    if kwargs['instance'].monthly_ad == True:
+        profile = Profile.objects.get(user=kwargs['instance'].user)
+        profile.monthly_ad = True
+        print(profile.monthly_ad)
+        profile.save()
+post_save.connect(update_profile, sender=Ads)
