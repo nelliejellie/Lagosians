@@ -34,20 +34,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6 responsive-width-top">
-                            <div class="social">
-                                <div class="social-icon">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 responsive-width-top">
                             <div class="links text-right">
                                 <a href="#pricing-plan">Post an Ad</a>
-                                <a href="register.html">Register</a>
                             </div>
                         </div>
                     </div>
@@ -81,7 +69,7 @@
                                         <div class="user-plan">
                                             <h4>DAILY PLAN</h4>
                                             <ul>
-                                                <li>Unlimited Ads</li>
+                                                <li>Place one ad</li>
                                                 <li>24 hours</li>
                                             </ul>
                                             <a href="{% url 'Ads:ad_form' %}" type="button">Purchase Now</a>
@@ -94,16 +82,10 @@
                                         <div class="user-plan">
                                             <h4>WEEKLY PLAN</h4>
                                             <ul>
-                                                <li>Unlimited Ads</li>
+                                                <li>Place one ad</li>
                                                 <li>07 Days</li>
                                             </ul>
-                                            {% for ad_object in ad %}
-                                                {% if ad_object.user == request.user and ad_object.weekly_ad %}                                                
-                                                    <a href="{% url 'Ads:ad_form' %}" type="button">Purchase Now</a>
-                                                {% else %}
-                                                    <a href="{% url 'paystack:payment'  %}" type="button">Purchase Now</a>
-                                                {% endif %}
-                                            {% endfor %} 
+                                                <a href="{% url 'paystack:payment'  %}" type="button">Purchase Now</a> 
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +98,11 @@
                                                 <li>Unlimited Ads</li>
                                                 <li>30 Days</li>
                                             </ul>
-                                            <a href="#" type="button">Purchase Now</a>
+                                            {% if request.user.profile.monthly_ad %}                                                
+                                                <a href="{% url 'Ads:ad_form_monthly' %}" type="button">Place Advert</a>
+                                            {% else %}
+                                                <a href="{% url 'paystack:payment_monthly'  %}" type="button">Purchase Now</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div><br>
@@ -129,7 +115,11 @@
                                                 <li>Unlimited Ads</li>
                                                 <li>12 months</li>
                                             </ul>
-                                            <a href="#" type="button">Purchase Now</a>
+                                            {% if request.user.profile.yearly_ad %}                                                
+                                                <a href="{% url 'Ads:ad_form_yearly' %}" type="button">Place Advert</a>
+                                            {% else %}
+                                                <a href="{% url 'paystack:payment_yearly'  %}" type="button">Purchase Now</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
