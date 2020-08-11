@@ -1,1 +1,496 @@
-<h1>ad posted</h1>
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Classify{% endblock %}</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,700,600,800,900,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/star-rating.css' %}">
+
+</head>
+{% block content %}
+<body>
+
+    <!--Start Header section-->
+    <section id="header">
+        <header>
+            <div class="top-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 responsive-width-top">
+                        
+                        </div>
+                        <div class="col-sm-6 responsive-width-top">
+                            <div class="links text-right">
+                                <a href="new-ad.html"></a>
+                                <a href="register.html"></a>
+                                <a href="{% url 'Ads:ad_home' %}">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end top bar-->
+
+           
+        </header>
+    </section><!--End Header section-->
+
+    <!--main sub page heading-->
+    <section id="page-head">
+        <div class="container">
+            <div class="row col-md-12">
+                <div class="page-heading">
+                    <h1>{{ad.adname}}</h1>
+                </div>
+            </div>
+        </div>
+    </section><!--end main page heading-->
+
+    <!--Detail -->
+    <section id="detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="ads-detail">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12 col-sm-12">
+                                <div class="ad-slider">
+                                    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+                                        <!-- Carousel indicators -->
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                                        </ol>
+                                        <!-- Carousel items -->
+                                        <div class="carousel-inner">
+                                            <div class="active item">
+                                                <img src="{% static 'images/carousel.png' %}" alt="carousel">
+                                            </div>
+                                            <div class="item">
+                                                <img src="{% static 'images/carousel.png' %}" alt="carousel">
+                                            </div>
+                                            <div class="item">
+                                                <img src="{% static 'images/carousel.png' %}" alt="carousel">
+                                            </div>
+                                        </div>
+                                        <!-- Carousel nav -->
+                                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                                            <i class="fa fa-angle-left"></i>
+                                        </a>
+                                        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div><!--end carousel-->
+                                </div><!--end ad-slider-->
+                            </div>
+                        </div>
+                        <div class="author-detail">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="author-avatar">
+                                        <img src="{% static 'images/images/author-avatar_03.png' %}" alt="author avatar">
+                                    </div>
+                                    <div class="author-name">
+                                        <p>{{ad.user.first_name}} {{ad.user.last_name}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="author-detail-right">
+                                        <div class="author-info">
+                                            <i class="fa fa-map-marker"></i>
+                                            <p>Address: BX 201 livingston street, Brooklyn New York</p>
+                                        </div>
+                                        <div class="author-info">
+                                            <i class="fa fa-phone"></i>
+                                            <p>Phone: +(646) 45321069</p>
+                                        </div>
+                                        <div class="author-info">
+                                            <i class="fa fa-globe"></i>
+                                            <p>Website: <a class="col" href="#"> www.classify.com </a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ad-detail">
+                            <div class="ad-detail-head">
+                                <i class="fa fa-truck fa-2x"></i>
+                                <h4 class="ad-cat">Vehicles</h4>
+                            </div>
+                            <div class="ad-detail-info clearfix">
+                                <p class="pull-left">TYPE:</p>
+                                <p class="pull-right light">Car</p>
+                            </div>
+                            <div class="ad-detail-info clearfix">
+                                <p class="pull-left">Model:</p>
+                                <p class="pull-right light">C5 Saloon</p>
+                            </div>
+                            <div class="ad-detail-info clearfix">
+                                <p class="pull-left">Year :</p>
+                                <p class="pull-right light">2008</p>
+                            </div>
+                            <div class="ad-detail-info clearfix">
+                                <p class="pull-left">Date :</p>
+                                <p class="pull-right light">May 21, 2014</p>
+                            </div>
+                            <div class="ad-detail-info clearfix">
+                                <p class="pull-left">Location :</p>
+                                <p class="pull-right light">Brooklyn, NY</p>
+                            </div>
+                            <div class="ad-detail-info clearfix">
+                                <p class="pull-left">Views :</p>
+                                <p class="pull-right light">2,108</p>
+                            </div>
+                            <div class="ad-detail-info clearfix">
+                                <p class="pull-left">Ratings:</p>
+                                <p class="pull-right light">
+                                <input id="input-2c" class="rating" min="0" max="5" step="0.5" data-size="xs"
+                                       data-symbol="&#xf005;" data-glyphicon="false" data-rating-class="rating-fa">
+                                </p>
+                            </div>
+                            <div class="ad-detail-info clearfix">
+                                <p>Description:</p>
+                                <p class="light line">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                            </div>
+
+                            <div class="tags">
+                                <i class="fa fa-tags"></i>
+                                <span>Tags:</span>
+                                <span> Expensive Cars, Red, Black, WordPress, Classified, Ads</span>
+                            </div>
+                        </div><!--end ad-detail-->
+                    </div>
+                    <!--map-->
+                    <div class="map">
+                        <div class="map-canvas">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d13605.559558133331!2d74.25901470000001!3d31.51344985!3m2!1i1024!2i768!4f13.1!2m1!1svirginia!5e0!3m2!1sen!2s!4v1427281032713"></iframe>
+                        </div>
+                    </div><!--end map-->
+
+                    <!--advertisement-->
+                    <div class="advert">
+                        <a href="#"><img src="images/images/detail-page-ad_03.png" alt="ad"> </a>
+                    </div>
+
+                    <!--Related Ads-->
+                    <div id="relatedAds">
+                        <h4 class="inner-heading">RELATED ADs</h4>
+                        <div class="row">
+                            <div class="col-sm-4 padding-control">
+                                <div class="ads">
+                                    <a href="#"><img src="images/images/relatedad1_03.png"></a>
+                                    <div class="ads-title"><p><a href="#">Classic Red Bike</a></p></div>
+                                    <a href="#" class="ads-hover">
+                                        <span>$1,000</span>
+                                        <i class="fa fa-cab fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 padding-control">
+                                <div class="ads">
+                                    <a href="#"><img src="images/images/relatedad2_03.png"></a>
+                                    <div class="ads-title"><p><a href="#">Expensive Car</a></p></div>
+                                    <a href="#" class="ads-hover">
+                                        <span>$3,000</span>
+                                        <i class="fa fa-cab fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 padding-control">
+                                <div class="ads">
+                                    <a href="#"><img src="images/images/relatedad3_03.png"></a>
+                                    <div class="ads-title"><p><a href="#">Antique things for sale</a></p></div>
+                                    <a href="#" class="ads-hover">
+                                        <span>$5,000</span>
+                                        <i class="fa fa-cab fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end related ads-->
+
+                    <!--form submission-->
+                    <div id="form">
+                        <h4 class="inner-heading">TO AUTHOR</h4>
+                        <form method="post">
+                            <div class="col-sm-6 input-pad">
+                                <span class="fa fa-user form-control-feedback"></span>
+                                <input class="form-control" type="text" name="name" placeholder="John Doe">
+
+                            </div>
+                            <div class="col-sm-6 input-pad">
+                                <span class="fa fa-envelope form-control-feedback"></span>
+                                <input class="form-control" type="email" name="email" placeholder="Email Address">
+                            </div>
+                            <div class="col-sm-12 padding-control">
+                                <span class="fa fa-book form-control-feedback"></span>
+                                <input class="form-control" type="text" name="subject" placeholder="Subject">
+                            </div>
+                            <div class="col-sm-12 padding-control">
+                                <textarea class="form-control"></textarea>
+                            </div>
+                            <p>Human test. Please input the result of 5+3=?</p>
+
+                                <input type="text" name="humantest">
+
+                            <input type="submit" value="Submit" name="submit">
+                        </form>
+                    </div>
+                    <!--end form submission-->
+                </div>
+                <div class="col-md-4">
+                    <div class="sidebar">
+                        <div class="side-widget clearfix">
+                            <h4 class="inner-heading">PREMIUM ADs</h4>
+                            <div class="col-md-12 col-sm-4">
+                                <div class="premium-widget">
+                                    <img src="{% static 'images/sideimg1_03.png' %}">
+                                    <a href="#" class="item-hover"><span>$199</span></a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-4">
+                                <div class="premium-widget">
+                                    <img src="{% static 'images/sideimg2_03.png' %}">
+                                    <a href="#" class="item-hover"><span>$199</span></a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-4">
+                                <div class="premium-widget">
+                                    <img src="{% static 'images/sideimg3_03.png' %}">
+                                    <a href="#" class="item-hover"><span>$199</span></a>
+                                </div>
+                            </div>
+                        </div><!--end premium widget-->
+
+                        <div class="side-widget">
+                            <h4 class="inner-heading">Latest ADs</h4>
+                            <div class="sidebar-latest-ad">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img src="images/images/side-latest-ad-img1_03.png" alt="side ads">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p><a href="#" class="col"> M26r Car 2014</a></p>
+                                        <p>$40,000</p>
+                                        <p>Condition 10/10 & fully original all parts...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-latest-ad">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img src="images/images/side-latest-ad-img2_03.png" alt="side ads">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p><a href="#" class="col"> M26r Car 2014</a></p>
+                                        <p>$40,000</p>
+                                        <p>Condition 10/10 & fully original all parts...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-latest-ad">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img src="images/images/side-latest-ad-img3_03.png" alt="side ads">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p><a href="#" class="col"> M26r Car 2014</a></p>
+                                        <p>$40,000</p>
+                                        <p>Condition 10/10 & fully original all parts...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-latest-ad">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img src="images/images/side-latest-ad-img4_03.png" alt="side ads">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p><a href="#" class="col"> M26r Car 2014</a></p>
+                                        <p>$40,000</p>
+                                        <p>Condition 10/10 & fully original all parts...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end latest ad widget-->
+
+                        <!--advertisement-->
+                        <div class="side-widget">
+                            <h4 class="inner-heading">ADVERTISEMENT</h4>
+                            <div class="side-widget-adv">
+                                <a href="#"><img src="images/images/advertiseimg_03.png" alt="google ads"></a>
+                            </div>
+                        </div><!--end advertisement widget-->
+
+                        <!--Tags-->
+                        <div class="side-widget">
+                            <h4 class="inner-heading">Tags</h4>
+                            <div class="tags">
+                                <a href="#">Ads</a>
+                                <a href="#">Design</a>
+                                <a href="#">Classified</a>
+                                <a href="#">PSD’s</a>
+                                <a href="#">Advertisement</a>
+                                <a href="#">Jobs</a>
+                                <a href="#">Community</a>
+                                <a href="#">Business</a>
+                                <a href="#">Interior</a>
+                                <a href="#">Condo</a>
+                                <a href="#">Pet</a>
+                                <a href="#">Shopping</a>
+                                <a href="#">Clothing</a>
+                                <a href="#">Vehicles</a>
+
+
+                            </div>
+                        </div><!--end tags widget-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--end details-->
+
+    <!--Footer-->
+    <section id="footer">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h4>ABOUT</h4>
+                            <p>Lorem ipsum dolor sit amet sectetuer esl adipiscing elit sed diam nonummy nibhi euismod tincidunt ut <span class="col">laoreet dolore</span> amet magna aliquam erat volutpat. </p>
+                            <p>Ut wisi enim ad minim veniam quis dest nostrud exerci tation ullamcorper norme
+                                suscipit lobortis commodo consequat.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h4>PREMIUM ADs</h4>
+
+                            <div class="footer-img">
+                                <a href="#"><img src="images/images/footerimg1_03.png" alt="premium"></a>
+                                <a href="#" class="footer-img-hover"><span>148$</span></a>
+                            </div>
+
+
+                            <div class="footer-img">
+                                <a href="#"><img src="images/images/footerimg2_03.png" alt="premium"></a>
+                                <a href="#" class="footer-img-hover"><span>148$</span></a>
+                            </div>
+
+
+                            <div class="footer-img">
+                                <a href="#"><img src="images/images/footerimg3_03.png" alt="premium"></a>
+                                <a href="#" class="footer-img-hover"><span>148$</span></a>
+                            </div>
+
+
+                            <div class="footer-img">
+                                <a href="#"><img src="images/images/footerimg4_03.png" alt="premium"></a>
+                                <a href="#" class="footer-img-hover"><span>148$</span></a>
+                            </div>
+
+
+                            <div class="footer-img">
+                                <a href="#"><img src="images/images/footerimg5_03.png" alt="premium"></a>
+                                <a href="#" class="footer-img-hover"><span>148$</span></a>
+                            </div>
+
+
+                            <div class="footer-img">
+                                <a href="#"><img src="images/images/footerimg6_03.png" alt="premium"></a>
+                                <a href="#" class="footer-img-hover"><span>148$</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h4>LATEST ADs</h4>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4 latest">
+                                    <div class="footer-img">
+                                        <img src="images/images/footerimg1_03.png" alt="premium">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8">
+                                    <a href="#">M26r Car 2014</a>
+                                    <ul>
+                                        <li>$40,000</li>
+                                        <li>Condition 10/10 & fully original all parts...</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4 latest">
+                                    <div class="footer-img pull-left">
+                                        <img src="images/images/footerimg4_03.png" alt="premium">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-xs-8 col-sm-8">
+                                    <a href="#">F39r Car 2013.</a>
+                                    <ul>
+                                        <li>$59,000</li>
+                                        <li>Black color & condition is 99.99%. Even no scratch...</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h4>NEWSLETTER</h4>
+                            <p class="sign">Lorem ipsum dolor sit amet sectetuer in adipiscing elit sed diam...</p>
+                            <p class="sign">Sign up for the newsletter !</p>
+                            <form method="post">
+                                <input type="email" name="email" placeholder="Your email address...">
+                                <input type="submit" name="submit" value="sign-up">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright text-center">
+                            <p>@ All Copyrights Reseverd 2014 - Design & Development by <a class="col" href="http://joinwebs.com/">Joinwebs</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+        </footer>
+    </section>
+    <!--End Footer-->
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/star-rating.js' %}"></script>
+    <script src="{% static 'js/default.js' %}"></script>
+    <script src="{% static 'layerslider/js/greensock.js' %}"></script>
+    <script src="{% static 'layerslider/js/layerslider.kreaturamedia.jquery.js' %}"></script>
+    <script src="{% static 'layerslider/js/layerslider.transitions.js' %}"></script>
+
+
+</body>
+{% endblock %}
+
+</html>
