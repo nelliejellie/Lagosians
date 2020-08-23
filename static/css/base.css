@@ -277,3 +277,6 @@ img.user-detail {
     font-style:italic;
     color:#ccc;
 }
+input{
+    padding: 2px solid black;
+}

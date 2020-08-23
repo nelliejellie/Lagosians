@@ -3,6 +3,42 @@
 {% block title %}{{ image.title}}{% endblock %}
 
 {% block content %}
+<style>
+    #comment-box{
+        background-color: #eae1e1;
+        width: 50%;
+        height: 100vh;
+        color: black;
+        margin: 10px;
+        overflow: auto;
+    }
+    .comment_image{
+        height: 30px;
+        width:30px;
+    }
+    .link-to-comment-form{
+        display: block;
+        margin: 10px;
+    }
+    .commentForm{
+        display:none;
+        padding: 10px;
+    }
+    .like-button-form,.unlike-button-form{
+        display: inline;
+        padding: 10px;
+    }
+    textarea{
+        display: block;
+    }
+    @media(max-width: 400px){
+        #comment-box{
+            background-color: #eae1e1;
+            width: 100%;
+           
+        }
+    }
+</style>
 <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <h1>{{image.title}}</h1>
     {% load thumbnail %}
@@ -35,7 +71,34 @@
             </a>
         </div>   
     </div>
+
+    <div id="comment-box" style="">
+        <button class="link-to-comment-form btn-light" style="padding: 5px;">Post a comment</button>
+        <form class="commentForm" method="POST">
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="btn-lg btn-success" style="display: block;">Post</button>
+        </form>
+        <h2 style="padding: 10px;">{{ comments.count }} Comment{{ comments.count|pluralize}} <span></span></h2>
+        {% for comment in comments %}
+            <p style="padding: 10px;">{{ comment.user.username}}:<br>{{ comment.body }}</p>
+            <form class="like-button-form">
+                <input type="hidden" name="like" value="like" >
+                <button type="submit" class="btn-outline-success" style="padding: 5px;">Nice: 70000</button>
+                {% csrf_token %}
+            </form>
+            <form class="unlike-button-form">
+                <input type="hidden" name="unlike" value="unlike">
+                <button type="submit" class="btn-outline-danger" style="padding: 5px;">Lame: 1234</button>
+                {% csrf_token %}
+            </form>
+        {% empty %}
+            <p style="padding: 10px;">There are no comments yet</p>
+        {% endfor %}    
+    </div>
+
     <div class="image-likes">
+        <h1>People who liked this</h1>
         {% for user in users_like %}
         <div>
             <img src="{{ user.profile.photo.url }}" alt="">
@@ -48,6 +111,18 @@
     {% endwith %}
     
     
+    <script>
+        console.log('hey nigga')
+        //get access to the link
+        let commentLink = document.querySelector('.link-to-comment-form');
+        //get access to the commentform
+        let commentForm = document.querySelector('.commentForm');
+        // assign an eventlistener to commentLink
+        commentLink.addEventListener('click',function(e){
+            console.log('change')
+            commentForm.style.display = 'block'
+        })
+    </script>
 {% endblock %}
 {% block domready %}
     $('a.like').click(function(e){
@@ -77,3 +152,4 @@
 );
 });
 {% endblock %}
+

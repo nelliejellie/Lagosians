@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import ImageCreateForm
-from .models import Image
+from .forms import ImageCreateForm, CommentForm
+from .models import Image, Comment
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from bookmarks.common.decorators import ajax_required
@@ -46,15 +46,34 @@ def image_create(request):
     return render (request, 'images/image/create.html', context)
 
 def image_detail(request, id, slug):
-    image = get_object_or_404(Image, id=id, slug=slug)
+    images = get_object_or_404(Image, id=id, slug=slug)
     # increment total image views by 1 using redis
-    total_views = r.incr(f'image:{image.id}:views')
+    total_views = r.incr(f'image:{images.id}:views')
     # increment total image views by 1 using redis
-    r.zincrby('image_ranking', 1, image.id)
+    r.zincrby('image_ranking', 1, images.id)
+
+    # add comments to the view
+    comments = images.images_comment.filter(active=True)
+    # instantiate a new comment
+    new_comment = None
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            cd = comment_form.cleaned_data
+            # create a comment object but dont save to the database yet
+            new_comment = comment_form.save(commit=False)
+            # assign the current post to the comment
+            new_comment.image = images
+            new_comment.user = request.user
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
     context = {
         'section' : 'images',
-        'image' : image,
+        'image' : images,
         'total_views' : total_views,
+        'comments': comments,
+        'comment_form': comment_form,
     }
     return render(request, 'images/image/detail.html', context)
 

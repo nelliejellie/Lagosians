@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
 from django.urls import reverse
+from django.contrib.auth.models import User
+from datetime import datetime
 
 
 # Create your models here.
@@ -27,4 +29,18 @@ class Image(models.Model):
 
     def get_absolute_url(self):
         return reverse('images:detail', args=[self.id, self.slug])
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, related_name='user_comment', on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, related_name='images_comment', on_delete=models.CASCADE)
+    body = models.TextField()
+    created =  models.DateField(default=datetime.now, db_index=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ('created',)
+
+    def __str__(self):
+        return f'{self.user}\'s comment'
 
