@@ -68,6 +68,13 @@ def image_detail(request, id, slug):
             new_comment.save()
     else:
         comment_form = CommentForm()
+    for comment in comments:
+        if request.method == 'POST':
+            if request.POST.get('like') == str(comment.id):
+                print(f'{request.user} liked {comment.body} and this is the {comment.id}')
+                comment.like.add(request.user)
+                comment.count_like = str(comment.like.count)
+                comment.save()
     context = {
         'section' : 'images',
         'image' : images,

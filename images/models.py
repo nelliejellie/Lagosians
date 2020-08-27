@@ -37,6 +37,8 @@ class Comment(models.Model):
     created =  models.DateField(default=datetime.now, db_index=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
+    like = models.ManyToManyField(User, related_name='comment_like')
+    count_likes = models.CharField(default=0, max_length=10)
 
     class Meta:
         ordering = ('created',)

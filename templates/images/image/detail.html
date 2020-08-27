@@ -82,9 +82,9 @@
         <h2 style="padding: 10px;">{{ comments.count }} Comment{{ comments.count|pluralize}} <span></span></h2>
         {% for comment in comments %}
             <p style="padding: 10px;">{{ comment.user.username}}:<br>{{ comment.body }}</p>
-            <form class="like-button-form">
-                <input type="hidden" name="like" value="like" >
-                <button type="submit" class="btn-outline-success" style="padding: 5px;">Nice: 70000</button>
+            <form class="like-button-form" method="POST">
+                <input type="hidden" name="like" value="{{comment.id}}" >
+                <button type="submit" class="btn-outline-success" style="padding: 5px;">Nice: {{ comment.like.count }}</button>
                 {% csrf_token %}
             </form>
             <form class="unlike-button-form">
@@ -112,7 +112,6 @@
     
     
     <script>
-        console.log('hey nigga')
         //get access to the link
         let commentLink = document.querySelector('.link-to-comment-form');
         //get access to the commentform
