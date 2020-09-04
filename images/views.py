@@ -66,6 +66,7 @@ def image_detail(request, id, slug):
             new_comment.image = images
             new_comment.user = request.user
             new_comment.save()
+            return redirect(images.get_absolute_url())
     else:
         comment_form = CommentForm()
     for comment in comments:
@@ -87,9 +88,31 @@ def image_detail(request, id, slug):
 @login_required
 @require_POST
 @ajax_required
+def comment_like(request):
+    comment_id = request.POST.get('id')
+    action = request.POST.get('action')
+    print (f'{comment_id} and {action}')
+    print(request.POST)
+    if comment_id and action:
+        try:
+            comment = Comment.objects.get(id=comment_id)
+            if action == 'like' and request.user in comment.like.all():
+                comment.like.remove(request.user)
+                return JsonResponse({'status':'removed','comment_id':comment_id})
+            elif action == 'like' and request.user not in comment.like.all():
+                comment.like.add(request.user)
+                return JsonResponse({'status':'added','comment_id':comment_id})
+        except:
+            pass
+        return JsonResponse({'status':'error'})
+
+@login_required
+@require_POST
+@ajax_required
 def image_like(request):
     image_id = request.POST.get('id')
     action = request.POST.get('action')
+    print (f'{image_id} and {action}')
     print(request.POST)
     if image_id and action:
         try:
@@ -99,7 +122,7 @@ def image_like(request):
                 create_action(request.user, 'likes', image)
             else:
                 image.users_like.remove(request.user)
-                return JsonResponse({'status':'ok'})
+            return JsonResponse({'status':'ok'})
         except:
             pass
         return JsonResponse({'status':'error'})

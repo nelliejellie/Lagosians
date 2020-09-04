@@ -57,7 +57,7 @@
     <div class="image-info">
         <div>
             <span class="count">
-                {{ total_likes }} like {{ total_likes| pluralize}}
+                <span class="total">{{ total_likes }}</span> like {{ total_likes| pluralize}}
             </span>
             <span class="count">
                 {{ total_views }} view {{ total_view| pluralize}}
@@ -82,16 +82,12 @@
         <h2 style="padding: 10px;">{{ comments.count }} Comment{{ comments.count|pluralize}} <span></span></h2>
         {% for comment in comments %}
             <p style="padding: 10px;">{{ comment.user.username}}:<br>{{ comment.body }}</p>
-            <form class="like-button-form" method="POST">
-                <input type="hidden" name="like" value="{{comment.id}}" >
-                <button type="submit" class="btn-outline-success" style="padding: 5px;">Nice: {{ comment.like.count }}</button>
-                {% csrf_token %}
-            </form>
-            <form class="unlike-button-form">
-                <input type="hidden" name="unlike" value="unlike">
-                <button type="submit" class="btn-outline-danger" style="padding: 5px;">Lame: 1234</button>
-                {% csrf_token %}
-            </form>
+            <div class="like-button-form" >
+                <a  id='comment-like-submit' data-id="{{ comment.id }}" data-action='like' class="btn-outline-success like-comment" style="padding: 5px;">Nice: <span id="comment-like-count" class="like-count {{ comment.id }}">{{ comment.like.count }}</span></a>
+            </div>
+            <div class="unlike-button-form">
+                <a  class="btn-outline-danger unlike-comment" style="padding: 5px;" data-id="{{ comment.id }}" data-action='unlike'>Lame: 1234</a>
+            </div>
         {% empty %}
             <p style="padding: 10px;">There are no comments yet</p>
         {% endfor %}    
@@ -109,19 +105,18 @@
         {% endfor %}
     </div>
     {% endwith %}
-    
-    
     <script>
-        //get access to the link
-        let commentLink = document.querySelector('.link-to-comment-form');
-        //get access to the commentform
-        let commentForm = document.querySelector('.commentForm');
-        // assign an eventlistener to commentLink
-        commentLink.addEventListener('click',function(e){
-            console.log('change')
-            commentForm.style.display = 'block'
-        })
+         //get access to the link
+         let commentLink = document.querySelector('.link-to-comment-form');
+         //get access to the commentform
+         let commentForm = document.querySelector('.commentForm');
+         // assign an eventlistener to commentLink to open the textarea after clicking
+         commentLink.addEventListener('click',function(e){
+             console.log('change')
+             commentForm.style.display = 'block'
+         })
     </script>
+    
 {% endblock %}
 {% block domready %}
     $('a.like').click(function(e){
@@ -134,21 +129,56 @@
     function(data){
         if (data['status'] == 'ok')
     {
-    var previous_action = $('a.like').data('action');
-    // toggle data-action
-    $('a.like').data('action', previous_action == 'like' ?
-    'unlike' : 'like');
-    // toggle link text
-    $('a.like').text(previous_action == 'like' ? 'Unlike' :
-    'Like');
-    // update total likes
-    var previous_likes = parseInt($('span.count .total').
-    text());
-    $('span.count .total').text(previous_action == 'like' ?
-    previous_likes + 1 : previous_likes - 1);
+        console.log('like ok')
+        var previous_action = $('a.like').data('action');
+        // toggle data-action
+        $('a.like').data('action', previous_action == 'like' ?
+        'unlike' : 'like');
+        // toggle link text
+        $('a.like').text(previous_action == 'like' ? 'Unlike' :
+        'Like');
+        // update total likes
+        var previous_likes = parseInt($('span.count .total').
+        text());
+        $('span.count .total').text(previous_action == 'like' ?
+        previous_likes + 1 : previous_likes - 1);
     }
     }
 );
 });
+// using ajax to update the likes in the comment section
+    $('a.like-comment').click(function(e){
+        e.preventDefault();
+    $.post('{% url "images:like_comment" %}',
+    {
+        id: $(this).data('id'),
+        action: $(this).data('action')
+    },
+    function(data){
+        console.log(data['status'])
+        if (data['status'] == 'removed'){
+            console.log(data['comment_id'])
+            {% for comment in comments %}
+                var cd = data['comment_id']
+                if(cd == {{comment.id}}){
+                    var getd = parseInt($('.{{comment.id}}').text());
+                    $('.{{comment.id}}').text(getd - 1)
+                    console.log(getd) 
+                }
+            {% endfor %}
+        }else if(data['status'] == 'added'){
+            {% for comment in comments %}
+                var cd = data['comment_id']
+                if(cd == {{comment.id}}){
+                    var getd = parseInt($('.{{comment.id}}').text());
+                    $('.{{comment.id}}').text(getd + 1)
+                    console.log(getd) 
+                }
+            {% endfor %}
+        }
+    }
+    );
+    });
 {% endblock %}
+
 
