@@ -52,8 +52,8 @@ def image_detail(request, id, slug):
     # increment total image views by 1 using redis
     r.zincrby('image_ranking', 1, images.id)
 
-    # add comments to the view
-    comments = images.images_comment.filter(active=True)
+    # add comments to the view and order by last added
+    comments = images.images_comment.filter(active=True).order_by('-created')
     # instantiate a new comment
     new_comment = None
     if request.method == 'POST':
@@ -89,22 +89,26 @@ def image_detail(request, id, slug):
 @require_POST
 @ajax_required
 def comment_like(request):
+    #get the id of the comment that was clicked
     comment_id = request.POST.get('id')
     action = request.POST.get('action')
     print (f'{comment_id} and {action}')
     print(request.POST)
     if comment_id and action:
         try:
+            # get the  comment that was clicked
             comment = Comment.objects.get(id=comment_id)
             if action == 'like' and request.user in comment.like.all():
                 comment.like.remove(request.user)
-                return JsonResponse({'status':'removed','comment_id':comment_id})
+                return JsonResponse({'status':'removed','comment_id':comment_id,'like':'like'})
             elif action == 'like' and request.user not in comment.like.all():
                 comment.like.add(request.user)
-                return JsonResponse({'status':'added','comment_id':comment_id})
+                return JsonResponse({'status':'added','comment_id':comment_id,'like':'like'})
         except:
             pass
         return JsonResponse({'status':'error'})
+
+
 
 @login_required
 @require_POST
@@ -126,6 +130,8 @@ def image_like(request):
         except:
             pass
         return JsonResponse({'status':'error'})
+
+
 
 @login_required
 def image_list(request):

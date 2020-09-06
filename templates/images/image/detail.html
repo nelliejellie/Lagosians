@@ -31,6 +31,9 @@
     textarea{
         display: block;
     }
+    a:hover{
+        cursor: pointer;
+    }
     @media(max-width: 400px){
         #comment-box{
             background-color: #eae1e1;
@@ -57,10 +60,10 @@
     <div class="image-info">
         <div>
             <span class="count">
-                <span class="total">{{ total_likes }}</span> like {{ total_likes| pluralize}}
+                <span class="total">{{ total_likes }}</span> like{{ total_likes|pluralize}}
             </span>
             <span class="count">
-                {{ total_views }} view {{ total_view| pluralize}}
+                {{ total_views }} view{{ total_views|pluralize}}
             </span>
             <a href="" data-id="{{ image.id }}" data-action="{% if request.user in users_like %}un{% endif %}like" class="like button" id="like">
             {% if request.user not in users_like %}
@@ -81,12 +84,9 @@
         </form>
         <h2 style="padding: 10px;">{{ comments.count }} Comment{{ comments.count|pluralize}} <span></span></h2>
         {% for comment in comments %}
-            <p style="padding: 10px;">{{ comment.user.username}}:<br>{{ comment.body }}</p>
+            <p style="padding: 10px;"><u>{{ comment.user.username}}</u>:<br>{{ comment.body }}</p>
             <div class="like-button-form" >
                 <a  id='comment-like-submit' data-id="{{ comment.id }}" data-action='like' class="btn-outline-success like-comment" style="padding: 5px;">Nice: <span id="comment-like-count" class="like-count {{ comment.id }}">{{ comment.like.count }}</span></a>
-            </div>
-            <div class="unlike-button-form">
-                <a  class="btn-outline-danger unlike-comment" style="padding: 5px;" data-id="{{ comment.id }}" data-action='unlike'>Lame: 1234</a>
             </div>
         {% empty %}
             <p style="padding: 10px;">There are no comments yet</p>
@@ -160,7 +160,8 @@
             console.log(data['comment_id'])
             {% for comment in comments %}
                 var cd = data['comment_id']
-                if(cd == {{comment.id}}){
+                var checker = data['like']
+                if(cd == {{comment.id}} && checker == 'like'){
                     var getd = parseInt($('.{{comment.id}}').text());
                     $('.{{comment.id}}').text(getd - 1)
                     console.log(getd) 
@@ -169,7 +170,8 @@
         }else if(data['status'] == 'added'){
             {% for comment in comments %}
                 var cd = data['comment_id']
-                if(cd == {{comment.id}}){
+                var checker = data['like']
+                if(cd == {{comment.id}} && checker == 'like'){
                     var getd = parseInt($('.{{comment.id}}').text());
                     $('.{{comment.id}}').text(getd + 1)
                     console.log(getd) 
@@ -179,6 +181,8 @@
     }
     );
     });
+
+    
 {% endblock %}
 
 
