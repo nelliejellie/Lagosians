@@ -56,15 +56,21 @@
 								<h3>Recent Ads</h3>
 							</div>
 							<div class="jobs-list">
-								<div class="job-info">
+								{%  for ad in recentAds %}
+								<div class="job-info">									
 									<div class="job-details">
-										<h3>Senior Product Designer</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-									</div>
+										<a href="{{ ad.get_absolute_url }}"><h3>{{ ad.adname }}</h3></a>
+										<p>{{ ad.description |truncatechars:20}}</p>
+									</div>									
 									<div class="hr-rate">
 										<span></span>
 									</div>
 								</div>
+								{% empty %}
+									<div class="job-details">
+										<h3> No Ads Posted Yet</h3>										
+									</div>
+								{% endfor %}
 							</div>
 						</div>					
 					</div><!--main-left-sidebar end-->
@@ -144,16 +150,19 @@
 								<h3>Just Joined</h3>
 								<i class="la la-ellipsis-v"></i>
 							</div><!--sd-title end-->
+							{% for users in justJoined %}
 							<div class="suggestions-list">
 								<div class="suggestion-usd">
-									<img src="images/resources/s1.png" alt="">
 									<div class="sgt-text">
-										<h4>Jessica William</h4>
-										<span>Graphic Designer</span>
+										<h4>{{users.user.first_name}} {{users.user.last_name}}</h4>
+										<span>{{users.occupation}}</span>
 									</div>
-									<span><i class="la la-plus"></i></span>
+									<a href="{{ users.user.get_absolute_url }}"><span><i class="la la-plus"></i></span></a>
 								</div>
 							</div><!--suggestions-list end-->
+							{% empty %}
+								<h4>No Users yet</h4>
+							{% endfor %}
 						</div><!--suggestions end-->
 					</div>
 				</div>
