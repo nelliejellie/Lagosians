@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
+    # rest framework urls
+    path('account/api/', include('account.api.urls', namespace='account_api')),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('images/', include('images.urls', namespace='images')),
     path('Ads/', include('Ads.urls', namespace='Ads')),

@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'Ads.apps.AdsConfig',
     'paystack',
-    'paystack_payments.apps.PaystackPaymentsConfig'
+    'paystack_payments.apps.PaystackPaymentsConfig',
+    'rest_framework'
 ]
 
 PAYSTACK_PUBLIC_KEY = 'pk_test_70c936bbe57c77727e27a3d36be0fcae769eab3b' # paystack public key
