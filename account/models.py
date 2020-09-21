@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from Ads.models import Ads
 from datetime import datetime
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 # Create your models here.
 #creating a related profile to your user
@@ -60,3 +62,9 @@ def update_profile(sender, **kwargs):
 
 # using post_save to send signal to the profile
 post_save.connect(update_profile, sender=Ads)
+
+# creating a token after an account has been created using a signal
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
