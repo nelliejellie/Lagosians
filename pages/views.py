@@ -6,6 +6,13 @@ from account.models import Profile
 from django.contrib.postgres.search import SearchVector
 from .forms import SearchForm
 from Ads.models import Ads
+from images.views import image_detail
+import redis
+from django.conf import settings
+
+
+#redis initialization
+r = redis.Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
 
 # Create your views here.
 @login_required
