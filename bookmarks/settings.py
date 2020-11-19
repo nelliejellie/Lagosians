@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'paystack',
     'paystack_payments.apps.PaystackPaymentsConfig',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'django_filters',
 ]
 
 REST_FRAMEWORK = {
@@ -64,7 +65,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 1
+    'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 PAYSTACK_PUBLIC_KEY = 'pk_test_70c936bbe57c77727e27a3d36be0fcae769eab3b' # paystack public key

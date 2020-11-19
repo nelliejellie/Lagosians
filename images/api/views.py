@@ -15,20 +15,11 @@ from rest_framework.pagination import PageNumberPagination, LimitOffsetPaginatio
 from rest_framework.generics import ListAPIView
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
+#filtering functinality
+from django_filters import rest_framework as filters
 
 
-# paginated list of images
-@api_view(['GET',])
-@permission_classes([AllowAny,])
-@csrf_exempt
-def image_list_view(request):
-    if request.method == 'GET':
-        paginator = PageNumberPagination()
-        paginator.page_size = 1
-        person_objects = Image.objects.all()
-        result_page = paginator.paginate_queryset(person_objects, request)
-        serializer = ImageSerializer(result_page, many=True)
-        return paginator.get_paginated_response(serializer.data)
+
 
 # list of all images
 @csrf_exempt
@@ -87,13 +78,31 @@ def image_list_detail(request, slug):
         return JsonResponse(serializer.data)
 
 # class based view to get the list of images
-# class ApiImageListView(ListAPIView, BrowsableAPIRenderer): 
-#     queryset = Image.objects.all()
-#     serializer_class = ImageSerializer
-#     authentication_classes = (TokenAuthentication,)
-#     permission_classes = (IsAuthenticated,)
-#     pagination_class = PageNumberPagination()
+class ApiImageListView(ListAPIView): 
+    queryset = Image.objects.all()
+    serializer_class = ImageSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    pagination_class = PageNumberPagination
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_fields = ('user__username','title')
 
+# function paginated list of images
+# @api_view(['GET',])
+# @permission_classes([AllowAny,])
+# @csrf_exempt
+# def image_list_view(request):
+#     if request.method == 'GET':
+#         paginator = PageNumberPagination()
+#         paginator.page_size = 1
+#         person_objects = Image.objects.all()
+#         result_page = paginator.paginate_queryset(person_objects, request)
+#         serializer = ImageSerializer(result_page, many=True)
+#         return paginator.get_paginated_response(serializer.data)
+
+
+
+#http://127.0.0.1:8000/api/images/listsss?title=back and better
 
 
         
