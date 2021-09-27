@@ -13,7 +13,6 @@ cryptography==2.9.2
 defusedxml==0.7.0rc1
 Django==3.0.2
 django-extensions==2.2.5
-django_filters
 -e git+https://github.com/gbozee/django-paystack.git@cfdf950e9f7fdc10fe6d4118b3a3327a68db68c9#egg=django_paystack
 django-taggit==1.2.0
 djangorestframework==3.11.0
