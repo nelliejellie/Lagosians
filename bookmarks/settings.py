@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'paystack_payments.apps.PaystackPaymentsConfig',
     'rest_framework',
     'rest_framework.authtoken',
-    'django_filters',
 ]
 
 REST_FRAMEWORK = {
