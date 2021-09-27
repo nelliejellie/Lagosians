@@ -15,8 +15,6 @@ from rest_framework.pagination import PageNumberPagination, LimitOffsetPaginatio
 from rest_framework.generics import ListAPIView
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
-#filtering functinality
-from django_filters import rest_framework as filters
 
 
 
@@ -84,8 +82,8 @@ class ApiImageListView(ListAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (AllowAny,)
     pagination_class = PageNumberPagination
-    filter_backends = [filters.DjangoFilterBackend]
-    filterset_fields = ('user__username','title')
+#     filter_backends = [filters.DjangoFilterBackend]
+#     filterset_fields = ('user__username','title')
 
 # function paginated list of images
 # @api_view(['GET',])
