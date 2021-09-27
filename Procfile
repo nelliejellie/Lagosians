@@ -1,1 +1,1 @@
-web: gunicorn Teletubbies.wsgi --log-file -
+web: gunicorn bookmarks.wsgi --log-file -
